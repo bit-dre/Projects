@@ -8,18 +8,26 @@ export default function Stopwatch() {
         let interval = null;
         if (isRunning) {
             interval = setInterval(() => {
-                setTime(prevTime => prevTime + 1);
-            }, 1000);
+                setTime(prevTime => prevTime + 10);
+            }, 10);
         } else if (!isRunning && time !== 0)  {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
     }, [isRunning, time]);
+
+    const formatTime = (time) => {
+        const minutes = Math.floor((time % 3600000) / 60000);
+        const seconds = Math.floor((time % 60000) / 1000);
+        const milliseconds = Math.floor((time % 1000) / 10);
+
+        return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(milliseconds).padStart(2, "0")}`;
+    }
     return (
         <div className='flex flex-col items-center justify-center h-screen'> 
             <div>
                 <h1 className='mb-4 text-4xl font-extrabold'> This is a Stopwatch </h1>
-                <p className='text-center text-3xl mb-4'> {time}</p>
+                <p className='my-10 text-center text-3xl'> {formatTime(time)}</p>
                 <div className='flex justify-between gap-4'>
                     <button onClick={
                             () => setIsRunning(!isRunning)
@@ -37,6 +45,7 @@ export default function Stopwatch() {
                         Reset
                     </button>
                 </div>
+                <div className='my-2 border-b border-gray-700/75 w-full'></div>
             </div>
 
         </div>
