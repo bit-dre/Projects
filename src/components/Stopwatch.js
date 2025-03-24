@@ -4,18 +4,41 @@ import { useState, useEffect } from 'react';
 export default function Stopwatch() {
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
-
+    useEffect(() => {
+        let interval = null;
+        if (isRunning) {
+            interval = setInterval(() => {
+                setTime(prevTime => prevTime + 1);
+            }, 1000);
+        } else if (!isRunning && time !== 0)  {
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    }, [isRunning, time]);
     return (
         <div className='flex flex-col items-center justify-center h-screen'> 
-            <h1 className='mb-4 text-4xl font-extrabold'> This is a Stopwatch </h1>
-            <div className='flex justify-evenly'>
-                <button className='rounded-full text-sm bg-blue-500'>
-                    Start
-                </button>
-                <button className='rounded-full text-sm bg-blue-500'>
-                    Stop
-                </button>
+            <div>
+                <h1 className='mb-4 text-4xl font-extrabold'> This is a Stopwatch </h1>
+                <p className='text-center text-3xl mb-4'> {time}</p>
+                <div className='flex justify-between gap-4'>
+                    <button onClick={
+                            () => setIsRunning(!isRunning)
+                            
+                            } 
+                            className={!isRunning ? 'cursor-pointer rounded-full font-bold text-green-500 text-sm bg-green-950 hover:bg-green-950/50 w-16 h-16 grow-0' : 'cursor-pointer rounded-full font-bold text-red-500 text-sm bg-red-950 hover:bg-red-950/50 w-16 h-16 grow-0'}>
+                        {isRunning ? 'Stop' : 'Start'}
+                    </button>
+                    <button 
+                        onClick={ () => {
+                            setTime(0);
+                            setIsRunning(false);
+                        }}
+                        className='cursor-pointer rounded-full font-bold text-sm bg-gray-700/75 hover:bg-gray-700/25 w-16 h-16 grow-0'>
+                        Reset
+                    </button>
+                </div>
             </div>
+
         </div>
     )
 }
