@@ -47,7 +47,6 @@ export default function Stopwatch() {
                 </div>
                 <div className='my-2 border-b border-gray-700/75 w-full'></div>
             </div>
-
         </div>
     )
 }
