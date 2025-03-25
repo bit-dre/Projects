@@ -24,16 +24,16 @@ export default function Stopwatch() {
         return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(milliseconds).padStart(2, "0")}`;
     }
     return (
-        <div className='flex flex-col items-center justify-center h-screen'> 
+        <div className='flex flex-col items-center justify-center p-8'> 
             <div>
-                <h1 className='mb-4 text-4xl font-extrabold'> This is a Stopwatch </h1>
-                <p className='my-10 text-center text-3xl'> {formatTime(time)}</p>
+                <h1 className='text-black mb-4 text-4xl font-extrabold'> This is a Stopwatch </h1>
+                <p className='text-black my-10 text-center text-3xl'> {formatTime(time)}</p>
                 <div className='flex justify-between gap-4'>
                     <button onClick={
                             () => setIsRunning(!isRunning)
                             
                             } 
-                            className={!isRunning ? 'cursor-pointer rounded-full font-bold text-green-500 text-sm bg-green-950 hover:bg-green-950/50 w-16 h-16 grow-0' : 'cursor-pointer rounded-full font-bold text-red-500 text-sm bg-red-950 hover:bg-red-950/50 w-16 h-16 grow-0'}>
+                            className={!isRunning ? 'cursor-pointer rounded-full font-bold text-green-500 text-sm bg-green-950 hover:bg-green-950/75 w-16 h-16 grow-0' : 'cursor-pointer rounded-full font-bold text-red-500 text-sm bg-red-950 hover:bg-red-950/75 w-16 h-16 grow-0'}>
                         {isRunning ? 'Stop' : 'Start'}
                     </button>
                     <button 
@@ -45,7 +45,7 @@ export default function Stopwatch() {
                         Reset
                     </button>
                 </div>
-                <div className='my-2 border-b border-gray-700/75 w-full'></div>
+                <div className='my-2 border-b text-black w-full'></div>
             </div>
         </div>
     )

@@ -28,9 +28,9 @@ export default function StarRating() {
     const totalStars = 5;
 
     return ( 
-        <div className='flex flex-col items-center justify-center h-screen'>
+        <div className='flex flex-col items-center justify-center p-8'>
             <div> 
-                <h1 className='mb-4 text-4xl font-extrabold'>
+                <h1 className='text-black mb-4 text-4xl font-extrabold'>
                     Give me a rating out of {totalStars}
                 </h1>
                 <div className='flex justify-evenly'>
@@ -49,7 +49,7 @@ export default function StarRating() {
                         )
                     })}
                 </div>
-                <p className='mt-4 text-lg text-center'>
+                <p className='text-black mt-4 text-lg text-center'>
                     {stars > 0 ? `You rated this ${stars} out of ${totalStars}` : " "}
                 </p>
             </div>
