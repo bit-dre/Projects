@@ -1,19 +1,26 @@
-import Counter from "../components/Counter";
-import Stopwatch from "../components/Stopwatch";
-import StarRating from "../components/StarRating";
+import Counter from "@/components/Counter";
+import Stopwatch from "@/components/Stopwatch";
+import StarRating from "@/components/StarRating";
+import Accordion from "@/components/Accordion";
+import ProgressBar from "@/components/ProgressBar";
 import { useState } from "react";
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState("tab1");
   const tabs = [
     {id:"tab1", label:"Counter"},
-    {id:"tab2", label:"Stop Watch"},
-    {id:"tab3", label:"Star Rating"},
+    {id:"tab2", label:"Stop watch"},
+    {id:"tab3", label:"Star rating"},
+    {id:"tab4", label:"Accordion"},
+    {id:"tab5", label:"Progress Bar"},
   ]
 
   const tabContent = {
     tab1: (<Counter />),
     tab2: (<Stopwatch />),
     tab3: (<StarRating />),
+    tab4: (<Accordion />),
+    tab5: (<ProgressBar />),
   }
   return (
     <div className="min-h-screen w-full flex items-center justify-center">
