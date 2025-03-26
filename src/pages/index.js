@@ -3,6 +3,7 @@ import Stopwatch from "@/components/Stopwatch";
 import StarRating from "@/components/StarRating";
 import Accordion from "@/components/Accordion";
 import ProgressBar from "@/components/ProgressBar";
+import NestedChecks from "@/components/NestedChecks";
 import { useState } from "react";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
     {id:"tab3", label:"Star rating"},
     {id:"tab4", label:"Accordion"},
     {id:"tab5", label:"Progress Bar"},
+    {id:"tab6", label:"Check Boxes"}
   ]
 
   const tabContent = {
@@ -21,6 +23,7 @@ export default function Home() {
     tab3: (<StarRating />),
     tab4: (<Accordion />),
     tab5: (<ProgressBar />),
+    tab6: (<NestedChecks />),
   }
   return (
     <div className="min-h-screen w-full flex items-center justify-center">
